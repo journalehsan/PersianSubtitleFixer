@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/pic">
+        <file>folder-symbolic.svg</file>
+        <file>document-save.png</file>
+        <file>gnome-subtitles.svg</file>
+        <file>font.png</file>
+    </qresource>
+</RCC>

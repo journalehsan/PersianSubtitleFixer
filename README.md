@@ -2,10 +2,12 @@
 Fix Subtitle Encoding from Windows Arabic to UTF-8
 
 حل مشکل زیرنویس فارسی و حروف ناخوانا
+<br>
+Version 0.1 Alpha
 
 Qt5 Application  <br>
 Features:
-<ul>You Able to drag file toWindow </ul>
+<ul>You can drag file to the Window </ul>
 <ul> Open and Save File with File dialogs </ul>
 <ul> There is an button to change text font </ul>
 

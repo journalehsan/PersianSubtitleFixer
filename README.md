@@ -7,13 +7,15 @@ Features:
 
 For compile please run codes below:
 <code>
-mkdir build
-cd build
-qmake ..
-make ..
-sudo mke install 
+mkdir build <br>
+cd build <br>
+qmake .. <br>
+make .. <br>
+sudo mke install  <br>
 </code>
 
-Or you can use PersianSubtitleFixer in build folder:
-chmod +x ./PersianSubtitleFixer
-./PersianSubtitleFixer
+Or you can use PersianSubtitleFixer in build folder: <br>
+<code>
+chmod +x ./PersianSubtitleFixer <br>
+./PersianSubtitleFixer <br>
+<code>

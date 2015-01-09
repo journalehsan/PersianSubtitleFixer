@@ -1,7 +1,7 @@
 # PersianSubtitleFixer
 Fix Subtitle Encoding from Windows Arabic to UTF-8
 
-حل مشکل زیرنویس فارسی و خروف ناخوانا
+حل مشکل زیرنویس فارسی و حروف ناخوانا
 
 Qt5
 Features:

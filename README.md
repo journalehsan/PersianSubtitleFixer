@@ -3,7 +3,7 @@ Fix Subtitle Encoding from Windows Arabic to UTF-8
 
 حل مشکل زیرنویس فارسی و حروف ناخوانا
 
-Qt5
+Qt5 Application  <br>
 Features:
 <ul>You Able to drag file toWindow </ul>
 <ul> Open and Save File with File dialogs </ul>

@@ -8,7 +8,7 @@ Version 0.2 Beta
 <h4>0,2 Changelog:<h4> <br><ul>
 <li>Bug fix</li>
 <li>Some changes in ui</li>
-<li>Ppen file via command prompt argument</li></ul>
+<li>Oppen file via command prompt argument</li></ul>
 
 Qt5 Application  <br>
 <h5>Some Features:<h5>

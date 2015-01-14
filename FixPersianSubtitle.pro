@@ -25,5 +25,4 @@ FORMS    += form1.ui \
 RESOURCES += \
     resources.qrc
 
-DISTFILES += \
-    about_icon.png
+DISTFILES +=

@@ -26,9 +26,10 @@
 #include <QShortcut>
 #include "about.h"
 
-QString opendfilename;
-QString dragfilename;
-QString firstfilename;
+//QString GlobalFileName;
+//QString GlobalFileName;
+//QString GlobalFileName;
+QString GlobalFileName;
 QString openfile(QString filename, bool choiceiszero);
 
 Form1::Form1(QWidget *parent) :
@@ -48,7 +49,7 @@ Form1::Form1(QWidget *parent) :
     ui->textEdit->setAcceptDrops(false);
 
     setAcceptDrops(true);
-    QString filename = firstfilename;
+    QString filename = GlobalFileName;
     //open file
 
     if(QFile::exists(filename)){
@@ -56,19 +57,15 @@ Form1::Form1(QWidget *parent) :
     }
     else
     {
-        //
+        ui->textEdit->setPlainText("Drag SRT Subtitle Here");
     }
     if(fileData != ""){
         ui->textEdit->setPlainText(fileData);
         this->setWindowTitle(filename);
     }
-    else
-    {
-        ui->textEdit->setPlainText("Drag SRT Subtitle Here");
-    }
 }
 void setfilename(QString filename){
-firstfilename = filename;
+GlobalFileName = filename;
 }
 
 Form1::~Form1()
@@ -89,7 +86,7 @@ void Form1::dropEvent(QDropEvent *event)
     QString fileName = urls.first().toLocalFile();
     if (fileName.isEmpty())
         return;
-   dragfilename = fileName;
+   GlobalFileName = fileName;
    bool choiceiszero;
    if (ui->cmbcodec->currentIndex()==0) {
        choiceiszero = true;}
@@ -121,10 +118,10 @@ QString openfile(QString filename,bool choiceiszero){
 void Form1::on_toolButton_clicked()
 {
 
-    QString filename = dragfilename;
+    QString filename = GlobalFileName;
     QString homepath =  QDir::homePath();
         filename= QFileDialog::getOpenFileName(this,"Open Windows-1256-Arabic SRT File:",homepath,"SRT File(*.srt);;AllFile(*.*)");
-    opendfilename = filename;
+    GlobalFileName = filename;
     //Change Unicode based on combobox
     bool choiceiszero;
      if (ui->cmbcodec->currentIndex() == 0){
@@ -142,8 +139,8 @@ void Form1::on_toolButton_clicked()
 }
 void Form1::on_toolButton_2_clicked()
 {
-    QString homepath =  opendfilename;
-    if(homepath == ""){
+    QString homepath =  GlobalFileName;
+    if(GlobalFileName == ""){
         QMessageBox::critical(this,"Error", "Please open file first! \n You can't save befor open a file!");
         on_toolButton_clicked();
     }

@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/pic/subtitle.png</normaloff>:/pic/subtitle.png</iconset>
+    <normaloff>:/pic/pics/subtitle.png</normaloff>:/pic/pics/subtitle.png</iconset>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
@@ -78,12 +78,12 @@
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/pic/about_icon.png</normaloff>:/pic/about_icon.png</iconset>
+         <normaloff>:/pic/pics/about_icon.png</normaloff>:/pic/pics/about_icon.png</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>24</width>
-         <height>24</height>
+         <width>14</width>
+         <height>22</height>
         </size>
        </property>
       </widget>
@@ -95,7 +95,7 @@
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/pic/font.png</normaloff>:/pic/font.png</iconset>
+         <normaloff>:/pic/pics/font.png</normaloff>:/pic/pics/font.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -118,7 +118,7 @@
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/pic/document-save.png</normaloff>:/pic/document-save.png</iconset>
+         <normaloff>:/pic/pics/save.png</normaloff>:/pic/pics/save.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -141,7 +141,7 @@
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/pic/Open-icon.png</normaloff>:/pic/Open-icon.png</iconset>
+         <normaloff>:/pic/pics/Open-icon.png</normaloff>:/pic/pics/Open-icon.png</iconset>
        </property>
        <property name="iconSize">
         <size>

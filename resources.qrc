@@ -1,11 +1,12 @@
 <RCC>
     <qresource prefix="/pic">
-        <file>document-save.png</file>
-        <file>font.png</file>
-        <file>Open-icon.png</file>
-        <file>subtitle.png</file>
-        <file>about_icon.png</file>
-        <file>subtitles_icon.jpg</file>
+        <file>pics/Open-icon.png</file>
+        <file>pics/about_icon.png</file>
+        <file>pics/font.png</file>
+        <file>pics/subtitle.png</file>
+        <file>pics/subtitles_icon.jpg</file>
+        <file>pics/Save-icon.png</file>
+        <file>pics/save.png</file>
     </qresource>
     <qresource prefix="/text">
         <file>LICENSE</file>

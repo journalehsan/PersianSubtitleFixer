@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
     }
     QApplication a(argc, argv);
     Form1 w;
+    w.setWindowTitle("Persian Subtitle Fixer");
     w.show();
     return a.exec();
 }

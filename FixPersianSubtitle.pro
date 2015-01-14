@@ -8,16 +8,22 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = PersianSubtitleFixer
+TARGET = persiansubtitlefixer
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        form1.cpp
+        form1.cpp \
+    about.cpp
 
-HEADERS  += form1.h
+HEADERS  += form1.h \
+    about.h
 
-FORMS    += form1.ui
+FORMS    += form1.ui \
+    about.ui
 
 RESOURCES += \
     resources.qrc
+
+DISTFILES += \
+    about_icon.png

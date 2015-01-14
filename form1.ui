@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/pic/gnome-subtitles.svg</normaloff>:/pic/gnome-subtitles.svg</iconset>
+    <normaloff>:/pic/subtitle.png</normaloff>:/pic/subtitle.png</iconset>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
@@ -27,6 +27,19 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>Droid Sans</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>File Type:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QComboBox" name="cmbcodec">
        <property name="minimumSize">
         <size>
@@ -36,25 +49,12 @@
        </property>
        <property name="font">
         <font>
-         <family>Noto Naskh Arabic UI</family>
+         <family>Ubuntu</family>
          <pointsize>10</pointsize>
         </font>
        </property>
        <property name="layoutDirection">
         <enum>Qt::RightToLeft</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="font">
-        <font>
-         <family>Noto Naskh Arabic UI</family>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>نوع فایل:</string>
        </property>
       </widget>
      </item>
@@ -70,6 +70,23 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/pic/about_icon.png</normaloff>:/pic/about_icon.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QToolButton" name="toolButton_3">
@@ -124,7 +141,7 @@
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/pic/folder-symbolic.svg</normaloff>:/pic/folder-symbolic.svg</iconset>
+         <normaloff>:/pic/Open-icon.png</normaloff>:/pic/Open-icon.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -156,66 +173,20 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="font">
-        <font>
-         <family>Noto Naskh Arabic UI</family>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>پایان</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <layout class="QHBoxLayout" name="horizontalLayout"/>
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
   <tabstop>textEdit</tabstop>
-  <tabstop>cmbcodec</tabstop>
-  <tabstop>toolButton</tabstop>
   <tabstop>toolButton_2</tabstop>
   <tabstop>toolButton_3</tabstop>
-  <tabstop>pushButton</tabstop>
  </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>Form1</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>562</x>
-     <y>614</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>616</x>
-     <y>492</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>toolButton</sender>
    <signal>clicked()</signal>

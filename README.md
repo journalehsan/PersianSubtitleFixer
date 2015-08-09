@@ -27,7 +27,7 @@ make .. <br>
 sudo mke install  <br>
 
 
-Or you can use PersianSubtitleFixer in build folder: <br>
+Then, After that, you can use PersianSubtitleFixer in build folder: <br>
 
 chmod +x ./PersianSubtitleFixer <br>
 ./PersianSubtitleFixer <br>

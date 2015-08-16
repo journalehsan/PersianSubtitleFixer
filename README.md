@@ -1,15 +1,13 @@
 # PersianSubtitleFixer
-Change subtitle encode from Windows Arabic to UTF-8
-
-حل مشکل زیرنویس فارسی و حروف ناخوانا
+<h4> Change subtitle encode from Windows Arabic to UTF-8 </h4> مشکل زیرنویس فارسی و حروف ناخوانا
 <br>
-Version 0.3 TP1
-<h4>0.3 Changelog: <h4> <br>  <ul>
+<h5> Version 0.3 TP1 </h5>
+<h6> 0.3 Change log: </h6> <br>  <ul>
 <li>Bug fix</li>
 <li>Use System icons</li>
 <li>Some improvements</li></ul>
 <hr>
-<h4>0.2 Changelog: <h4> <br>  <ul>
+<h6> 0.2 Change log: </h6> <br>  <ul>
 <li>Bug fix</li>
 <li>Some changes in ui</li>
 <li>Oppen file via command prompt argument</li></ul>
@@ -30,7 +28,7 @@ qmake .. <br>
 make .. <br>
 sudo mke install  </pre>
 <hr>
-Then, After that, you can use PersianSubtitleFixer in build folder: <br>
+<p> Then, After that, you can use PersianSubtitleFixer in build folder: </p> <br>
 
 <pre> chmod +x ./PersianSubtitleFixer <br>
 ./PersianSubtitleFixer </pre>

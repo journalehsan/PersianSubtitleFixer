@@ -30,7 +30,7 @@ class Form1 : public QWidget
 public:
     explicit Form1(QWidget *parent = 0);
     void setFileName(QString *strFileName);
-
+    QString openFile(QString filename, bool optionOneSelected);
     ~Form1();
 
 protected:

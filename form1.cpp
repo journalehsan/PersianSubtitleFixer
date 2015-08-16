@@ -30,7 +30,6 @@
 //QString GlobalFileName;
 //QString GlobalFileName;
 QString GlobalFileName;
-QString openFile(QString filename, bool optionOneSelected);
 
 Form1::Form1(QWidget *parent) :
     QWidget(parent),
@@ -100,8 +99,10 @@ void Form1::dropEvent(QDropEvent *event)
         return;
 
     QString strFileName = urls.first().toLocalFile();
-    if (strFileName.isEmpty())
+    if (strFileName.isEmpty()){
+        this->setWindowTitle("Persian Subtitle Fixer");
         return;
+    }
    GlobalFileName = strFileName;
    bool optionOneSelected;
    if (ui->cmbcodec->currentIndex()==0) {
@@ -112,17 +113,13 @@ void Form1::dropEvent(QDropEvent *event)
    //open file
    QString strPlainData = openFile(strFileName,optionOneSelected);
    ui->textEdit->setPlainText(strPlainData);
-   //set title
-   QFileInfo fileInfo(strFileName);
-   QString fileName(fileInfo.fileName());
-   this->setWindowTitle(fileName);
 }
-QString openFile(QString filename,bool optionOneSelected){
-    QFile fileopen(filename);
-         if (!fileopen.open(QIODevice::ReadOnly | QIODevice::Text)){
+QString Form1::openFile(QString filePath,bool optionOneSelected){
+    QFile flOpenedFileName(filePath);
+         if (!flOpenedFileName.open(QIODevice::ReadOnly | QIODevice::Text)){
              return "";
          }
-    QTextStream open(&fileopen);
+    QTextStream open(&flOpenedFileName);
     if (optionOneSelected == true){
         open.setCodec("windows-1256");
     }
@@ -130,13 +127,15 @@ QString openFile(QString filename,bool optionOneSelected){
         open.setCodec("utf-8");
     }
     QString filedata = open.readAll();
-    fileopen.flush();
-    fileopen.close();
+    flOpenedFileName.flush();
+    flOpenedFileName.close();
+    QFileInfo fileInfo(filePath);
+    QString fileName(fileInfo.fileName());
+    this->setWindowTitle(fileName);
     return filedata;
 }
 void Form1::on_btnOpen_clicked()
 {
-    this->setWindowTitle("Persian Subtitle Fixer");
     QString filePath = GlobalFileName;
     QString homepath =  QDir::homePath();
         filePath= QFileDialog::getOpenFileName(this,"Open Windows-1256-Arabic SRT File:",homepath,"SRT File(*.srt);;AllFile(*.*)");
@@ -153,9 +152,6 @@ void Form1::on_btnOpen_clicked()
          QString FileData = openFile(filePath,optionOneSelected);
          //Display datat in Textbox
          ui->textEdit->setPlainText(FileData);
-         QFileInfo fileInfo(filePath);
-         QString fileName(fileInfo.fileName());
-         this->setWindowTitle(fileName);
      }
      else{
          this->setWindowTitle("Persian Subtitle Fixer");

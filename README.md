@@ -27,6 +27,9 @@ cd build <br>
 qmake .. <br>
 make  </pre>
 <hr>
-<p> Then, After that, you can use PersianSubtitleFixer in build folder: </p>
-<pre> chmod +x ./PersianSubtitleFixer <br>
-./PersianSubtitleFixer </pre>
+<p> Then, After that, you can use persiansubtitlefixer in build folder: </p>
+<pre> chmod +x ./persiansubtitlefixer <br>
+sudo cp persiansubtitlefixer /usr/bin/PersianSubtitleFixer <br>
+sudo chmod +x /usr/bin/PersianSubtitleFixer <br> </pre>
+<p> After this commands, You can run Application with codes in below: </p>
+<pre> PersianSubtitleFixer </pre>

@@ -25,8 +25,7 @@ Qt5 Application  <br>
 mkdir build <br>
 cd build <br>
 qmake .. <br>
-make .. <br>
-sudo mke install  </pre>
+make  </pre>
 <hr>
 <p> Then, After that, you can use PersianSubtitleFixer in build folder: </p>
 <pre> chmod +x ./PersianSubtitleFixer <br>

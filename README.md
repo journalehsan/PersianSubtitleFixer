@@ -1,11 +1,15 @@
 # PersianSubtitleFixer
-Fix Subtitle Encoding from Windows Arabic to UTF-8
+Change subtitle encode from Windows Arabic to UTF-8
 
 حل مشکل زیرنویس فارسی و حروف ناخوانا
 <br>
-Version 0.2 Beta
+Version 0.3 TP1
+<h4>0.3 Changelog: <h4> <br> <hr> <ul>
+<li>Bug fix</li>
+<li>Use System icons</li>
+<li>Some improvments</li></ul>
 
-<h4>0,2 Changelog:<h4> <br><ul>
+<h4>0.2 Changelog: <h4> <br> <hr> <ul>
 <li>Bug fix</li>
 <li>Some changes in ui</li>
 <li>Oppen file via command prompt argument</li></ul>

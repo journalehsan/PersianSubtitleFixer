@@ -1,4 +1,4 @@
-//This program is free software: you can redistribute it and/or modify
+﻿//This program is free software: you can redistribute it and/or modify
 //it under the terms of the GNU General Public License as published by
 //the Free Software Foundation, either version 3 of the License, or
 //(at your option) any later version.
@@ -38,11 +38,10 @@ protected:
     void dropEvent(QDropEvent *event);
 
 private slots:
-    void on_toolButton_clicked();
-    void on_toolButton_2_clicked();
-    void on_toolButton_3_clicked();
-
-    void on_pushButton_2_clicked();
+    void on_btnOpen_clicked();
+    void on_btnSave_clicked();
+    void on_btnFont_clicked();
+    void on_btnAbout_clicked();
 
 private:
     Ui::Form1 *ui;

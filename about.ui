@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>649</width>
-    <height>473</height>
+    <width>710</width>
+    <height>639</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset>
     <normaloff>:/pic/subtitle.png</normaloff>:/pic/subtitle.png</iconset>
   </property>
   <property name="layoutDirection">
@@ -30,17 +30,17 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources.qrc">:/pic/subtitles_icon.jpg</pixmap>
+      <pixmap>:/pic/subtitles_icon.jpg</pixmap>
      </property>
     </widget>
    </item>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLabel" name="appname">
+      <widget class="QLabel" name="lblAppname">
        <property name="font">
         <font>
-         <pointsize>14</pointsize>
+         <pointsize>28</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -51,15 +51,26 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="appversion">
+      <widget class="QLabel" name="lblAppversion">
        <property name="font">
         <font>
-         <family>Monospace</family>
-         <pointsize>11</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>0,2</string>
+        <string>00</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblAuthorName">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Author</string>
        </property>
       </widget>
      </item>
@@ -68,8 +79,11 @@
        <property name="font">
         <font>
          <family>Monospace</family>
-         <pointsize>10</pointsize>
+         <pointsize>11</pointsize>
         </font>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
        </property>
       </widget>
      </item>
@@ -103,16 +117,8 @@
     </layout>
    </item>
   </layout>
-  <zorder>layoutWidget</zorder>
-  <zorder>buttonBox</zorder>
-  <zorder>appname</zorder>
-  <zorder>appversion</zorder>
-  <zorder>plainTextEdit</zorder>
-  <zorder>image</zorder>
  </widget>
- <resources>
-  <include location="resources.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>pushButton</sender>

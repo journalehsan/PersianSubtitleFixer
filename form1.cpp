@@ -1,4 +1,4 @@
-//This program is free software: you can redistribute it and/or modify
+﻿//This program is free software: you can redistribute it and/or modify
 //it under the terms of the GNU General Public License as published by
 //the Free Software Foundation, either version 3 of the License, or
 //(at your option) any later version.
@@ -30,39 +30,56 @@
 //QString GlobalFileName;
 //QString GlobalFileName;
 QString GlobalFileName;
-QString openfile(QString filename, bool choiceiszero);
+QString openfile(QString filename, bool optionOneSelected);
 
 Form1::Form1(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Form1)
 {
     ui->setupUi(this);
+    //File Data variable
     QString fileData;
+    //setup widgets
     ui->cmbcodec->addItem("Windows Arabic - نا سالم");
-    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(close()));
-    new QShortcut(QKeySequence(Qt::Key_Escape), this, SLOT(close()));
-    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_O), this, SLOT(on_toolButton_clicked()));
-    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_S), this, SLOT(on_toolButton_2_clicked()));
-    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_F), this, SLOT(on_toolButton_3_clicked()));
     ui->cmbcodec->addItem("UTF-8 - سالم");
     this->setWindowTitle("Persian Subtitle Fixer");
     ui->textEdit->setAcceptDrops(false);
-
+    ui->btnAbout->setIcon(QIcon::fromTheme("help-about"));
+    ui->btnOpen->setIcon(QIcon::fromTheme("folder-open"));
+    ui->btnSave->setIcon(QIcon::fromTheme("folder-save"));
+    ui->btnFont->setIcon(QIcon::fromTheme("preferences-desktop-font"));
+    //set tooltips
+    ui->btnAbout->setToolTip("<p> <b> About... </b></p> Persian Subtitle Fixer <i>0.3-TP1</i>");
+    ui->btnOpen->setToolTip("<p> <b> Open Subtitle file </b></p>  <i>Open  Dialog </i>");
+    ui->btnSave->setToolTip("<b> <p> Save Fixed Subtitle file </b> </p> <i>Save Dialog</i>");
+    ui->btnFont->setToolTip("<p> <b> Change Font </b> </p> Text Preview <i> Customize Font</i>");
+    //set true -> drops on form
     setAcceptDrops(true);
-    QString filename = GlobalFileName;
-    //open file
-
-    if(QFile::exists(filename)){
-        fileData = openfile(filename,true);
+    //FileName for Global Usage in app
+    QString filePath = GlobalFileName;
+    //open file after start if it opened from commandline
+    if(QFile::exists(filePath)){
+        fileData = openfile(filePath,true);
     }
     else
     {
-        ui->textEdit->setPlainText("Drag SRT Subtitle Here");
+        ui->textEdit->setPlainText("Drag SRT Subtitle Here"); //write default text for textbox at start when no file open
     }
+    //check file dtat after open
     if(fileData != ""){
         ui->textEdit->setPlainText(fileData);
-        this->setWindowTitle(filename);
+        QFileInfo fileInfo(filePath);
+        QString fileName(fileInfo.fileName());
+        this->setWindowTitle(fileName);
+
     }
+    //keyboard shortcuts
+    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(close()));
+    new QShortcut(QKeySequence(Qt::Key_Escape), this, SLOT(close()));
+    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_O), this, SLOT(on_btnOpen_clicked()));
+    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_S), this, SLOT(on_btnSave_clicked()));
+    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_F), this, SLOT(on_btnFont_clicked()));
+    //end of shortcuts
 }
 void setfilename(QString filename){
 GlobalFileName = filename;
@@ -87,23 +104,23 @@ void Form1::dropEvent(QDropEvent *event)
     if (fileName.isEmpty())
         return;
    GlobalFileName = fileName;
-   bool choiceiszero;
+   bool optionOneSelected;
    if (ui->cmbcodec->currentIndex()==0) {
-       choiceiszero = true;}
+       optionOneSelected = true;}
    else{
-       choiceiszero = false;
+       optionOneSelected = false;
    }
-   QString plaindata = openfile(fileName,choiceiszero);
+   QString plaindata = openfile(fileName,optionOneSelected);
    ui->textEdit->setPlainText(plaindata);
 
 }
-QString openfile(QString filename,bool choiceiszero){
+QString openfile(QString filename,bool optionOneSelected){
     QFile fileopen(filename);
          if (!fileopen.open(QIODevice::ReadOnly | QIODevice::Text)){
              return "";
          }
     QTextStream open(&fileopen);
-    if (choiceiszero == true){
+    if (optionOneSelected == true){
         open.setCodec("windows-1256");
     }
     else{
@@ -114,44 +131,51 @@ QString openfile(QString filename,bool choiceiszero){
     fileopen.close();
     return filedata;
 }
-
-void Form1::on_toolButton_clicked()
+void Form1::on_btnOpen_clicked()
 {
-
-    QString filename = GlobalFileName;
+    this->setWindowTitle("Persian Subtitle Fixer");
+    QString filePath = GlobalFileName;
     QString homepath =  QDir::homePath();
-        filename= QFileDialog::getOpenFileName(this,"Open Windows-1256-Arabic SRT File:",homepath,"SRT File(*.srt);;AllFile(*.*)");
-    GlobalFileName = filename;
+        filePath= QFileDialog::getOpenFileName(this,"Open Windows-1256-Arabic SRT File:",homepath,"SRT File(*.srt);;AllFile(*.*)");
+    GlobalFileName = filePath;
     //Change Unicode based on combobox
-    bool choiceiszero;
+    bool optionOneSelected;
      if (ui->cmbcodec->currentIndex() == 0){
-         choiceiszero = true;
+         optionOneSelected = true;
      }
      else{
-         choiceiszero = false;
+         optionOneSelected = false;
      }
-     if (filename !="" || !QFile::exists(filename) ){
-         QString FileData = openfile(filename,choiceiszero);
+     if (filePath !="" || QFile::exists(filePath) ){
+         QString FileData = openfile(filePath,optionOneSelected);
          //Display datat in Textbox
          ui->textEdit->setPlainText(FileData);
-         this->setWindowTitle(filename);
+         QFileInfo fileInfo(filePath);
+         QString fileName(fileInfo.fileName());
+         this->setWindowTitle(fileName);
      }
+     else{
+         this->setWindowTitle("Persian Subtitle Fixer");
+     }
+
 }
-void Form1::on_toolButton_2_clicked()
+
+void Form1::on_btnSave_clicked()
 {
+    this->setWindowTitle("Persian Subtitle Fixer");
     QString homepath =  GlobalFileName;
     if(GlobalFileName == ""){
         QMessageBox::critical(this,"Error", "Please open file first! \n You can't save befor open a file!");
-        on_toolButton_clicked();
+        on_btnOpen_clicked();
     }
     else{
         QString filename =  QFileDialog::getSaveFileName(this, tr("Save File"),
                                                          homepath,
                                                          tr("Save SRT to UTF-8 (*.srt)"));
-        QFile filedelete(filename);
-        if (filedelete.exists())
-            filedelete.remove();
-        filedelete.close();
+        QFile fileForDelete(filename); //check if file exist delete first then save file
+        if (fileForDelete.exists())
+            fileForDelete.remove();
+        fileForDelete.close();
         //savedialog
         QFile filesave(filename);
         if (!filesave.open(QIODevice::ReadWrite | QIODevice::Text)){
@@ -166,24 +190,26 @@ void Form1::on_toolButton_2_clicked()
             filesave.flush();
         }
     }
+
 }
 
-void Form1::on_toolButton_3_clicked()
+void Form1::on_btnFont_clicked()
 {
     bool ok;
     QFont font = QFontDialog::getFont(
-                    &ok, QFont("Helvetica [Cronyx]", 10), this);
+                    &ok, QFont("SansSerif", 13), this);
+
     if (ok)  {
         ui->textEdit->setFont(font);
     } else  {
         // the user canceled the dialog; font is set to the initial
-        // value, in this case Helvetica [Cronyx], 10
     }
 }
 
-void Form1::on_pushButton_2_clicked()
+void Form1::on_btnAbout_clicked()
 {
     about *w = new about;
             w->setAttribute(Qt::WA_DeleteOnClose);
+            w->setWindowIcon(QIcon::fromTheme("help-about"));
             w->show();
 }

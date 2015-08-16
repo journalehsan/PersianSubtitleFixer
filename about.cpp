@@ -1,4 +1,4 @@
-#include "about.h"
+﻿#include "about.h"
 #include "ui_about.h"
 #include "form1.h"
 #include <QFile>
@@ -10,12 +10,11 @@ about::about(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setAutoFillBackground(true);
-    this->setWindowTitle("Persian Subtitle Fixer");
-    this->setStyleSheet("color: black;"
-                                    "background-color: white;"
-                                    "selection-color: blue;"
-                                    "selection-background-color: white;");
-
+    this->setWindowIcon(QIcon::fromTheme("help-about"));
+    this->setWindowTitle("About Persian Subtitle Fixer");
+    this->ui->lblAuthorName->setText("Author: Ehsan Tork, E-Mail: journalehsan@gmail.com");
+    this->ui->lblAppname->setText("Persian Subtitle Fixer TP1");
+    this->ui->lblAppversion->setText("0.3-TP1");
     QFile fileopen(":/text/LICENSE");
          if (!fileopen.open(QIODevice::ReadOnly | QIODevice::Text)){
              //;

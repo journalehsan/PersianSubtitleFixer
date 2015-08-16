@@ -30,7 +30,7 @@
 //QString GlobalFileName;
 //QString GlobalFileName;
 QString GlobalFileName;
-QString openfile(QString filename, bool optionOneSelected);
+QString openFile(QString filename, bool optionOneSelected);
 
 Form1::Form1(QWidget *parent) :
     QWidget(parent),
@@ -45,8 +45,8 @@ Form1::Form1(QWidget *parent) :
     this->setWindowTitle("Persian Subtitle Fixer");
     ui->textEdit->setAcceptDrops(false);
     ui->btnAbout->setIcon(QIcon::fromTheme("help-about"));
-    ui->btnOpen->setIcon(QIcon::fromTheme("folder-open"));
-    ui->btnSave->setIcon(QIcon::fromTheme("folder-save"));
+    ui->btnOpen->setIcon(QIcon::fromTheme("document-open"));
+    ui->btnSave->setIcon(QIcon::fromTheme("document-save"));
     ui->btnFont->setIcon(QIcon::fromTheme("preferences-desktop-font"));
     //set tooltips
     ui->btnAbout->setToolTip("<p> <b> About... </b></p> Persian Subtitle Fixer <i>0.3-TP1</i>");
@@ -59,19 +59,18 @@ Form1::Form1(QWidget *parent) :
     QString filePath = GlobalFileName;
     //open file after start if it opened from commandline
     if(QFile::exists(filePath)){
-        fileData = openfile(filePath,true);
+        fileData = openFile(filePath,true);
     }
     else
     {
         ui->textEdit->setPlainText("Drag SRT Subtitle Here"); //write default text for textbox at start when no file open
     }
     //check file dtat after open
-    if(fileData != ""){
+    if(filePath != ""){
         ui->textEdit->setPlainText(fileData);
         QFileInfo fileInfo(filePath);
         QString fileName(fileInfo.fileName());
         this->setWindowTitle(fileName);
-
     }
     //keyboard shortcuts
     new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(close()));
@@ -81,8 +80,8 @@ Form1::Form1(QWidget *parent) :
     new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_F), this, SLOT(on_btnFont_clicked()));
     //end of shortcuts
 }
-void setfilename(QString filename){
-GlobalFileName = filename;
+void setFileName(QString strFileName){
+    GlobalFileName = strFileName;
 }
 
 Form1::~Form1()
@@ -100,21 +99,25 @@ void Form1::dropEvent(QDropEvent *event)
     if (urls.isEmpty())
         return;
 
-    QString fileName = urls.first().toLocalFile();
-    if (fileName.isEmpty())
+    QString strFileName = urls.first().toLocalFile();
+    if (strFileName.isEmpty())
         return;
-   GlobalFileName = fileName;
+   GlobalFileName = strFileName;
    bool optionOneSelected;
    if (ui->cmbcodec->currentIndex()==0) {
        optionOneSelected = true;}
    else{
        optionOneSelected = false;
    }
-   QString plaindata = openfile(fileName,optionOneSelected);
-   ui->textEdit->setPlainText(plaindata);
-
+   //open file
+   QString strPlainData = openFile(strFileName,optionOneSelected);
+   ui->textEdit->setPlainText(strPlainData);
+   //set title
+   QFileInfo fileInfo(strFileName);
+   QString fileName(fileInfo.fileName());
+   this->setWindowTitle(fileName);
 }
-QString openfile(QString filename,bool optionOneSelected){
+QString openFile(QString filename,bool optionOneSelected){
     QFile fileopen(filename);
          if (!fileopen.open(QIODevice::ReadOnly | QIODevice::Text)){
              return "";
@@ -147,7 +150,7 @@ void Form1::on_btnOpen_clicked()
          optionOneSelected = false;
      }
      if (filePath !="" || QFile::exists(filePath) ){
-         QString FileData = openfile(filePath,optionOneSelected);
+         QString FileData = openFile(filePath,optionOneSelected);
          //Display datat in Textbox
          ui->textEdit->setPlainText(FileData);
          QFileInfo fileInfo(filePath);

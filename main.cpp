@@ -1,4 +1,4 @@
-//This program is free software: you can redistribute it and/or modify
+﻿//This program is free software: you can redistribute it and/or modify
 //it under the terms of the GNU General Public License as published by
 //the Free Software Foundation, either version 3 of the License, or
 //(at your option) any later version.
@@ -15,16 +15,16 @@
 #include "form1.h"
 #include <QApplication>
 #include <QTextCodec>
-void setfilename(QString filename);
+void setFileName(QString strFileName);
 int main(int argc, char *argv[])
 {
-    QString filename = argv[1];
-    if(filename != ""){
-        setfilename(filename);
+    QString srtFileName = argv[1];
+    if(srtFileName!= ""){
+        setFileName(srtFileName);
     }
     else
     {
-        setfilename(argv[1]);
+        setFileName(argv[1]);
     }
     QApplication a(argc, argv);
     Form1 w;

@@ -29,7 +29,7 @@ class Form1 : public QWidget
 
 public:
     explicit Form1(QWidget *parent = 0);
-    void setfilename(QString *filename);
+    void setFileName(QString *strFileName);
 
     ~Form1();
 

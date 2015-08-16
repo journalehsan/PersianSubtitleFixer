@@ -15,6 +15,7 @@
 #include "form1.h"
 #include <QApplication>
 #include <QTextCodec>
+#include <QFileInfo>
 void setFileName(QString strFileName);
 int main(int argc, char *argv[])
 {
@@ -27,8 +28,16 @@ int main(int argc, char *argv[])
         setFileName(argv[1]);
     }
     QApplication a(argc, argv);
-    Form1 w;
-    w.setWindowTitle("Persian Subtitle Fixer");
-    w.show();
+    Form1 form;
+    if (!argv[1]){
+        form.setWindowTitle("Persian Subtitle Fixer");
+    }
+    else
+    {
+        QFileInfo fileInfo(argv[1]);
+        QString fileName(fileInfo.fileName());
+        form.setWindowTitle(fileName);
+    }
+    form.show();
     return a.exec();
 }

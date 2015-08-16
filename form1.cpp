@@ -41,7 +41,7 @@ Form1::Form1(QWidget *parent) :
     //setup widgets
     ui->cmbcodec->addItem("Windows Arabic - نا سالم");
     ui->cmbcodec->addItem("UTF-8 - سالم");
-    this->setWindowTitle("Persian Subtitle Fixer");
+    //set drop on textbox -> false
     ui->textEdit->setAcceptDrops(false);
     ui->btnAbout->setIcon(QIcon::fromTheme("help-about"));
     ui->btnOpen->setIcon(QIcon::fromTheme("document-open"));

@@ -28,7 +28,6 @@ qmake .. <br>
 make .. <br>
 sudo mke install  </pre>
 <hr>
-<p> Then, After that, you can use PersianSubtitleFixer in build folder: </p> <br>
-
+<p> Then, After that, you can use PersianSubtitleFixer in build folder: </p>
 <pre> chmod +x ./PersianSubtitleFixer <br>
 ./PersianSubtitleFixer </pre>

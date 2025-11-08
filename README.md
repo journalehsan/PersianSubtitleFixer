@@ -2,6 +2,10 @@
 
 Modern Rust/libadwaita rewrite of the original Qt utility for converting Persian SRT subtitles from Windows-1256 (Windows Arabic) to UTF-8 so they render correctly on Linux, macOS, and open-source media players.
 
+## Personal Story
+
+This was my first serious C++/Qt project from 10 years ago when I began using Qt seriously and became skilled in C++. However, this year I switched to Rust and now use GTK, Tauri, Iced, and other frameworks instead of Qt. I decided to rewrite my first project in Rust both for learning purposes and for fun! It's interesting to see how much development practices and tooling have evolved over the past decade.
+
 ## Branch layout
 
 - `main` – the new Rust implementation (this branch).

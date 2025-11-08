@@ -1,0 +1,20 @@
+[package]
+name = "persian-subtitle-fixer"
+version = "0.4.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+authors = ["Ehsan Tork <journalehsan@gmail.com>", "Contributors"]
+description = "A libadwaita application that converts Persian SRT subtitles from Windows-1256 to UTF-8."
+readme = "README.md"
+homepage = "https://github.com/ehsator/PersianSubtitleFixer"
+repository = "https://github.com/ehsator/PersianSubtitleFixer"
+publish = false
+
+[dependencies]
+adw = { package = "libadwaita", version = "0.5", features = ["v1_4"] }
+gtk4 = { version = "0.7", features = ["v4_10"] }
+gio = "0.18"
+glib = "0.18"
+encoding_rs = "0.8"
+thiserror = "1.0"
+dirs = "5.0"

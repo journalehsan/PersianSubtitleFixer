@@ -1,9 +1,0 @@
-<RCC>
-    <qresource prefix="/pic">
-        <file>pics/subtitle.png</file>
-        <file>pics/subtitles_icon.jpg</file>
-    </qresource>
-    <qresource prefix="/text">
-        <file>LICENSE</file>
-    </qresource>
-</RCC>

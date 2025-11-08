@@ -97,6 +97,8 @@ impl AppController {
     }
 
     fn build_ui(self: &Rc<Self>) {
+        let main_box = gtk::Box::new(gtk::Orientation::Vertical, 0);
+        
         let header = adw::HeaderBar::new();
         let title = adw::WindowTitle::new(
             "Persian Subtitle Fixer",
@@ -114,23 +116,23 @@ impl AppController {
         save_button.set_tooltip_text(Some("Save as UTF-8"));
         header.pack_start(&save_button);
 
-        let about_button = gtk::Button::from_icon_name("help-about-symbolic");
-        about_button.add_css_class("flat");
-        about_button.set_tooltip_text(Some("About Persian Subtitle Fixer"));
-        header.pack_end(&about_button);
-
         let font_button = gtk::Button::from_icon_name("preferences-desktop-font-symbolic");
         font_button.add_css_class("flat");
         font_button.set_tooltip_text(Some("Change preview font"));
         header.pack_end(&font_button);
 
-        self.window.set_titlebar(Some(&header));
-
-        let main_box = gtk::Box::new(gtk::Orientation::Vertical, 12);
-        main_box.set_margin_top(12);
-        main_box.set_margin_bottom(12);
-        main_box.set_margin_start(12);
-        main_box.set_margin_end(12);
+        let about_button = gtk::Button::from_icon_name("help-about-symbolic");
+        about_button.add_css_class("flat");
+        about_button.set_tooltip_text(Some("About Persian Subtitle Fixer"));
+        header.pack_end(&about_button);
+        
+        main_box.append(&header);
+        
+        let content_box = gtk::Box::new(gtk::Orientation::Vertical, 12);
+        content_box.set_margin_top(12);
+        content_box.set_margin_bottom(12);
+        content_box.set_margin_start(12);
+        content_box.set_margin_end(12);
 
         let controls_row = gtk::Box::new(gtk::Orientation::Horizontal, 12);
         controls_row.set_valign(Align::Center);
@@ -138,19 +140,20 @@ impl AppController {
         encoding_label.set_xalign(0.0);
         controls_row.append(&encoding_label);
         controls_row.append(&self.encoding_selector);
-        main_box.append(&controls_row);
+        content_box.append(&controls_row);
 
         let scrolled = gtk::ScrolledWindow::builder()
             .hscrollbar_policy(gtk::PolicyType::Automatic)
             .vscrollbar_policy(gtk::PolicyType::Automatic)
             .build();
         scrolled.set_child(Some(&self.text_view));
-        main_box.append(&scrolled);
+        content_box.append(&scrolled);
 
         let status_row = gtk::Box::new(gtk::Orientation::Horizontal, 6);
         status_row.append(&self.status_label);
-        main_box.append(&status_row);
+        content_box.append(&status_row);
 
+        main_box.append(&content_box);
         self.window.set_content(Some(&main_box));
 
         self.connect_actions(&open_button, &save_button, &about_button, &font_button);
